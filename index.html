@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IC2 9x9 核电模拟器</title>
+    <link rel="stylesheet" href="./styles.css?v=0.4.1" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <h1>IC2 9x9 核电模拟器 <span class="version-badge">v0.4.1</span></h1>
+            <p>社区版 9x9 空间，普通铀棒与基础热管理组件</p>
+          </div>
+          <div class="top-actions">
+            <button id="simulateBtn" class="primary-btn" type="button">模拟 20000s</button>
+            <button id="clearBtn" class="icon-btn" type="button" title="清空布局">清空</button>
+          </div>
+        </header>
+
+        <section class="metrics" aria-label="模拟指标">
+          <div class="metric">
+            <span>EU/t</span>
+            <strong id="euMetric">0</strong>
+          </div>
+          <div class="metric">
+            <span>总发热</span>
+            <strong id="heatMetric">0 hU/s</strong>
+          </div>
+          <div class="metric">
+            <span>总散热</span>
+            <strong id="coolMetric">0 hU/s</strong>
+          </div>
+          <div class="metric">
+            <span>反应堆热量</span>
+            <strong id="hullMetric">0 / 10000</strong>
+          </div>
+          <div class="metric status">
+            <span>状态</span>
+            <strong id="statusMetric">等待布局</strong>
+          </div>
+        </section>
+
+        <section class="sim-controls" aria-label="进度控制">
+          <div class="time-readout">
+            <span id="timeLabel">0s</span>
+            <span id="cycleLabel">0.0%</span>
+          </div>
+          <input id="timeSlider" type="range" min="0" max="20000" value="0" step="1" />
+        </section>
+
+        <section class="reactor-stage">
+          <aside class="inspector">
+            <h2>格子状态</h2>
+            <div id="selectedInfo" class="selected-info">选择一个格子查看组件热量与耐久。</div>
+            <h2>布局代码</h2>
+            <textarea id="layoutCode" spellcheck="false" aria-label="布局代码"></textarea>
+            <div class="inline-actions">
+              <button id="copyLayoutBtn" type="button">生成代码</button>
+              <button id="clipboardLayoutBtn" type="button">复制</button>
+              <button id="loadLayoutBtn" type="button">读取代码</button>
+            </div>
+          </aside>
+
+          <section class="board-wrap">
+            <div id="grid" class="reactor-grid" aria-label="9x9 反应堆网格"></div>
+          </section>
+
+          <aside class="palette-panel">
+            <div class="palette-head">
+              <h2>组件</h2>
+              <div class="palette-actions">
+                <div class="view-switch" aria-label="组件视图">
+                  <button id="gridViewBtn" class="mini-tool active" type="button" title="网格视图">
+                    <svg class="tool-icon" aria-hidden="true" viewBox="0 0 24 24">
+                      <path d="M4 4h6v6H4z"></path>
+                      <path d="M14 4h6v6h-6z"></path>
+                      <path d="M4 14h6v6H4z"></path>
+                      <path d="M14 14h6v6h-6z"></path>
+                    </svg>
+                    <span class="sr-only">网格视图</span>
+                  </button>
+                  <button id="listViewBtn" class="mini-tool" type="button" title="列表视图">
+                    <svg class="tool-icon" aria-hidden="true" viewBox="0 0 24 24">
+                      <path d="M8 6h12"></path>
+                      <path d="M8 12h12"></path>
+                      <path d="M8 18h12"></path>
+                      <path d="M4 6h.01"></path>
+                      <path d="M4 12h.01"></path>
+                      <path d="M4 18h.01"></path>
+                    </svg>
+                    <span class="sr-only">列表视图</span>
+                  </button>
+                </div>
+                <div class="tool-switch" aria-label="工具">
+                  <button id="inspectBtn" class="tool-btn active" type="button" data-tool="inspect" title="查看">
+                    <svg class="tool-icon" aria-hidden="true" viewBox="0 0 24 24">
+                      <circle cx="11" cy="11" r="6"></circle>
+                      <path d="m16 16 4 4"></path>
+                    </svg>
+                    <span class="sr-only">查看</span>
+                  </button>
+                  <button id="eraserBtn" class="tool-btn" type="button" data-tool="eraser" title="删除">
+                    <svg class="tool-icon" aria-hidden="true" viewBox="0 0 24 24">
+                      <path d="M4 7h16"></path>
+                      <path d="M9 7V4h6v3"></path>
+                      <path d="M6 7l1 13h10l1-13"></path>
+                      <path d="M10 11v5"></path>
+                      <path d="M14 11v5"></path>
+                    </svg>
+                    <span class="sr-only">删除</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="palette" class="palette"></div>
+          </aside>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js?v=0.4.1"></script>
+  </body>
+</html>
