@@ -1,3 +1,37 @@
-# IC2 Refabricated Reactor Simulator
+# IC2 9x9 核电模拟器
 
-Initial repository seed. Full simulator files are uploaded in the next commit.
+当前版本：v0.4.1
+
+本地静态网页版本，面向 9x9 社区版反应堆空间。
+
+## 使用
+
+打开：
+
+```text
+http://127.0.0.1:8790/
+```
+
+也可以直接打开 `index.html`。
+
+## 当前支持
+
+- 9x9 反应堆网格
+- 单联、双联、四联普通铀棒
+- 中子反射板、加厚中子反射板、铱中子反射板
+- 散热器、高级散热器、反应堆散热器、超频散热器、元件散热器
+- 换热器、高级换热器、反应堆换热器、元件换热器
+- 反应堆隔板、安全反应堆隔板、热容反应堆隔板
+- 红石冷凝模块、青金石冷凝模块
+- 固定 20000 秒燃料周期
+- EU/t、总发热、总散热、反应堆热量、组件热量/耐久
+- 模拟进度滑条
+- 布局代码生成与读取
+- 组件损毁遮罩提示
+- Wiki 物品贴图，网页版本默认从 FTB Wiki 加载，`assets/wiki` 保留为本地备用资源
+
+## 说明
+
+第一版按 IC2 Experimental 常见组件数值实现。目标是服务 MK1 普通堆模拟：检查能否跑满 20000 秒、是否有堆体升温或组件损坏。
+
+当前贴图来自 FTB Wiki 的对应物品文件。铱中子反射板在 FTB Wiki 中没有 IC2 原图文件，暂用 wiki 上同名 GregTech 5 图标作为占位；如果你有服务器材质包，可以直接替换 `assets/wiki/iridiumReflector.png`。
