@@ -2,11 +2,17 @@
 
 当前版本：v0.4.1
 
-本地静态网页版本，面向 9x9 社区版反应堆空间。
+静态网页版本，面向 [Industrial Craft 2 Refabricated](https://github.com/yu1745/ic2-fabric) 的 9x9 反应堆空间。
 
 ## 使用
 
-打开：
+在线使用：
+
+```text
+https://chenjunzi.github.io/ic2-refabricated-reactor-sim/
+```
+
+本地打开：
 
 ```text
 http://127.0.0.1:8790/
