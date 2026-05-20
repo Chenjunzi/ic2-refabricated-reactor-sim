@@ -1,0 +1,7 @@
+backups/
+test-shots/
+screenshot.png
+.edge-*/
+.edge-profile*/
+publish-manifest.json
+tools/
